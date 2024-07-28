@@ -1,4 +1,10 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+interface SubmitData {
+  name: string;
+  email: string;
+  content: string;
+}
 
 const ContactPage = () => {
   const {
@@ -6,9 +12,9 @@ const ContactPage = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm();
+  } = useForm<SubmitData>();
 
-  const submit = async (data) => {
+  const submit: SubmitHandler<SubmitData> = async (data) => {
     try {
       const res = await fetch(
         "https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts",
@@ -75,7 +81,7 @@ const ContactPage = () => {
             </label>
             <div className="w-3/4">
               <textarea
-                rows="8"
+                rows={8}
                 id="content"
                 className="border border-gray-400 rounded-lg py-1 pl-2 w-full"
                 {...register("content", {
