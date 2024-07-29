@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 
-interface PostType {
+interface Post {
   id: number;
   categories: string[];
   createdAt: Date;
@@ -10,11 +10,11 @@ interface PostType {
   content: string;
 }
 
-const Card = () => {
+const Card: React.FC = () => {
   const dateFormat = (date: Date) => {
     return format(new Date(date), "yyyy-MM-dd");
   };
-  const [posts, setPosts] = useState<PostType[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const getAllPosts = async () => {

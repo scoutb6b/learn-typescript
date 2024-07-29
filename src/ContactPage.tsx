@@ -6,7 +6,7 @@ interface SubmitData {
   content: string;
 }
 
-const ContactPage = () => {
+const ContactPage: React.FC = () => {
   const {
     register,
     handleSubmit,
