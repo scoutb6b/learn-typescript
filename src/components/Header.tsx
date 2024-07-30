@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <header className="bg-slate-700 p-4 text-xl font-semibold text-white flex justify-between">
       <Link to="/">Blog</Link>

@@ -2,10 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 
-const PostPage = () => {
+interface PostData {
+  thumbnailUrl: string;
+  createdAt: Date;
+  categories: string[];
+  title: string;
+  content: string;
+}
+
+const PostPage: React.FC = () => {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
-  const dateFormat = (date) => {
+  const [post, setPost] = useState<PostData | null>(null);
+  const dateFormat = (date: Date) => {
     return format(new Date(date), "yyyy-MM-dd");
   };
   useEffect(() => {
